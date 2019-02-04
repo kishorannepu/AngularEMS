@@ -1,0 +1,61 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$my-style-primary: mat-palette($mat-green,900);
+$my-style-accent: mat-palette($mat-yellow,900);
+$my-style-warn: mat-palette($mat-red,900);
+
+
+
+$my-style-theme: mat-light-theme($my-style-primary, $my-style-accent, $my-style-warn);
+
+// @mixin mix-my-style-theme($my-style-theme) {
+//     $primary: map-get($my-style-theme, primary);
+//     $accent: map-get($my-style-theme, accent);
+  
+//     .mat-button-toggle-group .mat-button-toggle {
+//       background-color: mat-color($primary);
+//       color: mat-color($primary, default-contrast);
+//     }
+  
+//     .mat-button-toggle-group .mat-button-toggle-checked {
+//       background-color: mat-color($accent);
+//       color: mat-color($accent, default-contrast);
+//     }
+//   }
+  
+//   // Include the mixin
+//   @include mix-my-style-theme($my-style-theme);
+
+$app-primary: mat-palette($mat-grey,400);
+$app-accent:  mat-palette($mat-orange,900);
+
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@mixin mix-app-theme($app-theme) {
+  $primary: map-get($app-theme, primary);
+  $accent: map-get($app-theme, accent);
+ 
+ 
+ 
+  .mat-button-toggle-group  .mat-button-toggle {
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  
+    font-size: 12px;
+    padding: 0%;
+   margin-top: -3.5%;
+
+  }
+
+  .mat-button-toggle-group  .mat-button-toggle-checked {
+    background-color: mat-color($accent);
+    color: mat-color($accent, default-contrast);
+  }
+}
+
+// Include the mixin
+@include mix-app-theme($app-theme);
+
+@include angular-material-theme($my-style-theme);

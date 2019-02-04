@@ -1,0 +1,48 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">
+      <img src="assets/indriynicon.png" width=100 height=50>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a style="color:white;"  mat-list-item routerLink="/pmindex/pmdashboard">
+        <i class="material-icons">
+          dashboard
+      </i>&nbsp;&nbsp;Dashboard
+      </a>
+     <a style="color:white;" mat-list-item routerLink="/pmindex/billing">
+      <i class="material-icons">
+        collections_bookmark
+        </i>&nbsp;&nbsp;Billing
+    </a>
+     <!-- <a mat-list-item href="#">Link 3</a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="overflow-y: hidden;overflow-x: hidden">
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <h1 class="profile">Energy Monitoring Section Dashboard - {{SiteName}}</h1>
+      <button [ngStyle]="{'margin-left':getColor(SiteName)}"  mat-button [matMenuTriggerFor]="menu">{{username}}</button>
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item class="drop-down-list">Settings</button>
+      <button mat-menu-item class="drop-down-list" >Help</button>
+      <button type="submit" mat-menu-item (click)="logout()" class="drop-down-list" >LogOut</button>
+    </mat-menu>
+      
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

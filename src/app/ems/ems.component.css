@@ -1,0 +1,311 @@
+
+.bg-img{
+ 
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.example-container {
+    display: flex;
+    /* border:1px solid gray; */
+    flex-direction: column;
+    padding:5px;
+    background: white;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  
+  
+  .grid-container {
+    margin: 20px;
+   
+  }
+
+  .dashboard-card{
+    height:241.5px;
+    width:190px;
+    background-color: rgb(219, 80, 16)
+  }
+  
+  span{
+  font-size: 10px;
+  
+  }
+  .mat-form-field{
+    max-width: 200PX;
+  }
+  
+  /* ================================ */
+input{
+  padding: 0%;
+  margin:0%;
+}
+
+
+   /* Original image */
+ .overlay-image{
+  display: block;
+ 
+  height:310px;
+  width:214px;
+ 
+ }
+ 
+ /* Original text overlay */
+ .overlay-image .text {
+  color: white;
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ overlay-image .normal {
+  transition: .5s ease;
+ }
+ .overlay-image .text1 {
+  color: rgb(233, 165, 19);
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ 
+ .overlay-image .text2 {
+  color: black;
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ .overlay-image .text3 {
+  color: black;
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ .overlay-image .text4 {
+  color: black;
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ 
+ .overlay-image .text5 {
+  color: black;
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ .overlay-image .text6 {
+  color: black;
+  font-size: 10px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+
+ .overlay-image .text7{
+  color: White;
+  font-size: 12px;
+  line-height: 1.5em;
+  /* text-shadow: 2px 2px 2px #000; */
+  text-align: center;
+  position: absolute;
+  top: 60%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+ }
+ 
+ .spinner{
+   margin-right:40%;
+   margin-left:40%;
+   margin-top:20%;
+   margin-bottom:40%
+ }
+ .example-card1 {
+  max-width: 320px;
+  padding-top:0px;
+  margin-top:-250px;
+  margin-left:350px;
+  height: 45%;
+  background-color: rgb(218, 99, 44)
+}
+.example-card2 {
+  max-width: 300px;
+  padding-top:0px;
+  padding-left:0px;
+  padding-right:0px;
+  margin-top:-250px;
+  margin-left:-50px;
+  height:45%;
+  background-color: white;
+}
+
+
+::ng-deep .tooltip {
+ 
+  background-color: red;
+  
+ 
+}
+/* mat-grid-tile{
+  background-color: red;
+} */
+/* responsive code */
+
+@media (max-width:675px) {  
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+  .example-card1 {
+    max-width: 180px;
+  
+    margin-top:-250px;
+  margin-left:-5px;
+    height: 45%;
+    background-color: rgb(218, 99, 44)
+  }
+  .example-card2 {
+    max-width: 170px;
+    padding-top:0px;
+    margin-top:-250px;
+  
+   
+    height:45%;
+    background-color: white;
+  }
+  
+ /* Original text overlay */
+ .overlay-image .text {
+  font-size: 8px;
+ }
+ overlay-image .normal {
+  transition: .5s ease;
+ }
+ .overlay-image .text1 {
+  font-size: 8px;
+ }
+ 
+ .overlay-image .text2 {
+  font-size: 8px;
+ }
+ .overlay-image .text3 {
+  font-size: 8px;
+ }
+ .overlay-image .text4 {
+  font-size: 8px;
+ }
+ 
+ .overlay-image .text5 {
+  font-size: 8px;
+ }
+ .overlay-image .text6 {
+  font-size: 8px;
+ }
+
+ .overlay-image .text7{
+ 
+  font-size: 10px;
+ }
+
+}
+@media only screen 
+ 
+and (min-width : 768px) and (max-width:770px) {
+/* Styles */
+.example-card1 {
+  max-width: 170px;
+
+  margin-top:-240px;
+  margin-left:255px;
+  height: 45%;
+  background-color: rgb(218, 99, 44)
+}
+.example-card2 {
+  max-width: 170px;
+ 
+  margin-top:-250px;
+ 
+  height:45%;
+  background-color: white;
+}
+
+/* Original text overlay */
+.overlay-image .text {
+font-size: 10px;
+
+}
+overlay-image .normal {
+transition: .5s ease;
+}
+.overlay-image .text1 {
+  font-size: 10px;
+ 
+}
+
+.overlay-image .text2 {
+  font-size: 10px;
+}
+.overlay-image .text3 {
+  font-size: 10px;
+}
+.overlay-image .text4 {
+  font-size: 10px;
+}
+
+.overlay-image .text5 {
+  font-size: 10px;
+}
+.overlay-image .text6 {
+font-size: 8px;
+}
+
+.overlay-image .text7{
+
+  font-size: 10px;
+}
+
+}

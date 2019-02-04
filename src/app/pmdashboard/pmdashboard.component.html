@@ -1,0 +1,265 @@
+<div *ngIf="error">{{error}}</div>
+<div class="grid-container" *ngIf="!error">
+
+  <mat-grid-list cols="3" rowHeight="100px" (window:resize)="onResize($event)">
+    <mat-grid-tile colspan="1" rowspan="100" *ngFor="let data of response" style="background-color: white;margin-top:0px;">
+      <mat-card class="dashboard-card example-card">
+        <table *ngIf="response">
+          <tr>
+            <td width="100" rowspan="2">
+              <div class="overlay-image">
+                <!-- <a mat-list-item routerLink="/mainindex/maindashboard"> -->
+                  <img mat-card-image [src]="data.SiteImgUrl" style="height: 20vh;width:230px;margin-top:0px;filter:brightness(60%)">
+                  <div class="normal">
+                    <div class="text2">
+                      {{data.SiteName}}
+                    </div>
+                    <div class="text3">
+                      {{latestpower|number:'2.0-0'}} kW
+                    </div>
+                    <div class="text">
+                      {{nodetime | date:'MMM d,h:mm a'}}
+                    </div>
+
+                  </div>
+                <!-- </a> -->
+              </div>
+
+
+
+
+
+            </td>
+
+          </tr>
+        </table>
+        <mat-card class="dashboard-card example-card4">
+          <table>
+            <tr>
+              <td width="100px" class="td1">
+                (UNITS)<br>
+                <span style="margin-left:0px;">kWh</span>
+              </td>
+              <td width="100px" class="td2">
+                <span style="color:white">Today</span><br>
+                <b>{{TodayEngergyvalue == "--" ? dash:TodayEngergyvalue | number:'2.0-0'}}</b>
+
+              </td>
+
+              <td width="100px" class="td3">
+                This Month <br>
+                <b>{{TotalMonthsConsumUpto| number:'4.0-0'}}</b>
+              </td>
+            </tr>
+            <tr>
+              <td class="td2-1">
+                Yesterday<br>
+                <b>{{EnergyValInrFmt}}</b>
+
+                <i class="material-icons" style="font-size:12px;margin-left:0px;font-weight:bold; color:yellow;">
+
+                  {{ ( dayenergyvaluepercentage<=0 ? 'keyboard_arrow_down' : 'keyboard_arrow_up' )}} </i> <span style="margin-left:0px;font-size:8px;
+   color:yellow;">{{dayenergyvaluepercentage=="- - -" ? dash:dayenergyvaluepercentage|number:'2.1-1'}}%</span>
+              </td>
+              <td class="td2-2">
+                Last Month<br>
+                To Date <br>
+                <b>{{( TotallastMonthsConsumUpto == 0 ? dash : TotallastMonthsConsumUpto |number:'4.0-0')}}</b>
+              </td>
+            </tr>
+          </table>
+
+
+        </mat-card>
+        <mat-card class="dashboard-card example-card5">
+          <table>
+            <tr>
+              <td width="100px" class="td1">
+                (INR)<br>
+                Rs
+              </td>
+              <td width="100px" class="td2">
+                Today<br>
+                <b>{{TodayEngergyCost == "--" ? dash:TodayEngergyCost|currency:'INR':'symbol-narrow':'3.0-0'}}</b>
+              </td>
+
+              <td width="100px" class="td3">
+                This Month <br>
+                <b>{{TotalMonthsConsumCost|currency:'INR':'symbol-narrow':'4.0-0'}}</b>
+              </td>
+            </tr>
+            <tr>
+              <td class="td2-1">
+                Yesterday<br>
+                <b>{{EnergyValInrFmtCost == "- - -" ? dash :EnergyValInrFmtCost|currency:'INR':'symbol-narrow':'4.0-0'}}</b>
+                <i class="material-icons" style="font-size:12px;margin-left:0px;font-weight:bold;color:yellow;" e>
+
+                  {{ ( dayenergycostpercentage<=0 ? 'keyboard_arrow_down' : 'keyboard_arrow_up' )}} </i> <span style="margin-left:0px;font-size:8px;color:yellow;">
+                    {{dayenergycostpercentage == "- - -" ? dash:dayenergycostpercentage | number:'2.1-1'}}%
+                    </span>
+
+              </td>
+              <td class="td2-2">
+                Last Month<br>
+                To Date <br>
+                <b>{{(TotallastMonthsConsumUptoCast == 0 ? dash :
+                  TotallastMonthsConsumUptoCast|currency:'INR':'symbol-narrow':'4.0-0')}}</b>
+              </td>
+            </tr>
+          </table>
+
+
+        </mat-card>
+      </mat-card>
+
+    </mat-grid-tile>
+    <!-- second grid tile -->
+    
+   
+    <mat-toolbar class="mat-tool">
+      <span style="margin-left:0px;font-size: 14px">Equipment</span>
+      <span style="margin-left: 5%;font-size: 14px">Live Data</span>
+      <span style="margin-left: 12%;font-size: 14px">Performance</span>
+      
+    </mat-toolbar>
+    <div style="margin-left: 60%;margin-top: 20%">
+      <mat-spinner *ngIf="status1"></mat-spinner>
+    </div>
+    <div class="dashboard-card scrollbar" style="margin-top:30px">
+
+      <mat-grid-tile colspan="2" rowspan="1" *ngFor="let i of sectiondata;let in =index" style="background-color: rgb(238, 238, 238);height:100px;margin-top:-1%;">
+
+        <mat-card class="dashboard-card example-card2" *ngFor="let data of sectioncal">
+          <table>
+            <tr>
+              <td width="100" rowspan="2">
+                <div class="overlay-image">
+                  <!-- <a mat-list-item routerLink="/mainindex/maindashboard"> -->
+                    <img mat-card-image [src]="i.Imageurl" style="height: 15vh;width:135px;filter: brightness(30%);margin-top:10px;">
+                    <div class="normal">
+                      <div class="sec-name">
+                        {{i.SectionName}}
+                      </div>
+
+                      <div class="date">
+
+                        {{dates[in]|date:'MMM d , h:mm a'}}
+
+                      </div>
+                    </div>
+                  <!-- </a> -->
+                </div>
+              </td>
+
+              <!-- 
+           
+             
+                  
+              
+                  
+                
+              
+                <mat-progress-spinner class="example-margin mat-spinner" id="infoi1" mode="determinate" value=100
+                  strokeWidth='0.3' diameter='30'>
+
+                </mat-progress-spinner>
+
+
+
+
+
+              </div>
+            </td> -->
+              <td width="220" style="text-align:center">
+                 
+                <div id="container">
+                   
+                   <mat-progress-spinner class="example-margin" id="navi" [color]="colors[in]" mode="determinate"
+                      [value]="sectioncal[in].loadPercentage" strokeWidth='5' diameter='40'>
+                    
+                    </mat-progress-spinner>
+                  
+                    <div  class="position">
+                       
+                      <span style="color:black;font-size: 12px">{{sectioncal[in].loadPercentage | number:'1.0-0'}}%</span>
+                    
+                    </div>
+                    <a href='javascript:;'   (click)="sectionLineChartClick(sectioncal[in].siteId,sectioncal[in].SectionID,sectioncal[in].enterpriseCode,i.SectionName)" >
+                    <mat-progress-spinner class="example-margin mat-spinner mat-spinner-color" id="infoi" mode="determinate" value="100"
+                      strokeWidth='0.1' diameter='40'>
+
+                    </mat-progress-spinner>
+                    
+                    <mat-progress-spinner class="example-margin mat-spinner mat-spinner-color mat-spinner-fill" id="infoi1" mode="determinate" value=100
+                      strokeWidth='0.1' diameter='30'>
+
+                    </mat-progress-spinner>
+                  </a>
+                </div>
+                
+              </td>
+              <td class="td3-tp">
+
+                <b>{{totalhours[in]}}</b>&nbsp;<span style="color:rgb(58, 57, 57);font-size:10px">hrs</span> &nbsp;
+                {{totalmins[in]}} &nbsp;<span style="color:rgb(58, 57, 57);font-size:10px">mins</span><br>
+                <i class="material-icons" style="font-size: 12px;color:rgb(43, 25, 209);margin-left:10px">
+                  alarm
+                </i>
+                <span style="margin-left:0px;font-size:10px;color:rgb(226, 79, 21)"> Total Run Time</span>
+              </td>
+              <td class="td-block2" *ngIf="status[in]">
+                  <a href="javascript:;">
+                <div class="badge"   (click)="cyclesPerMonth(sectioncal[in].siteId,sectioncal[in].SectionID,sectioncal[in].enterpriseCode,i.SectionName)">
+
+                  {{( cycle[in] | number:'1.1-1')}}
+                  </div>
+                  </a>
+                 <span>Cycles/hr</span>
+              </td>
+            </tr>
+
+            <tr>
+                <td class="tr2-td2-po1">
+                  <b>{{sectioncal[in].po1|number:'1.0-0'}}</b>
+                  &nbsp;<span style="color:rgb(58, 57, 57);font-size: 10px">kW</span><br>
+                  <span style="font-size:10px;color:rgb(226, 79, 21)"> Now
+                    <div class="block" [ngStyle]="{'background-color':sectioncal[in].currentState === 'ON' ? 'green' : 'red' }">
+
+                    </div>
+                  </span>
+                </td>
+              <td class="tr2-td2-ontime">
+                <b>{{ontotalhours[in]}}</b>&nbsp;<span style="color:rgb(58, 57, 57);font-size:10px">{{sectiontype[in]
+                  == "" ? nohrs : hrs}}</span>&nbsp; {{ontotalmins[in]}}&nbsp;<span style="color:rgb(58, 57, 57);font-size:10px">{{sectiontype[in]
+                  == "" ? onmins : mins}}</span> <br>
+                <span style="margin-left:5px;font-size:10px;color:rgb(226, 79, 21)">{{sectiontype[in]}}</span>
+              </td>
+              <td class="td-block3" *ngIf="status[in]">
+                <div class="badge">
+                  {{sectioncal[in].noOfPeaks}}
+                </div>
+                <span>Spikes</span>
+              </td>
+            </tr>
+          </table>
+        </mat-card>
+
+      </mat-grid-tile>
+    </div>
+
+
+
+  </mat-grid-list>
+
+
+
+
+
+
+
+  <!-- hi_cycleList=
+  np.where(cyclediffer[pos_cycleList]
+   > 
+   ((max(cyclediffer[pos_cycleList])-min(cyclediffer[pos_cycleList]))/4)) -->
+
+   

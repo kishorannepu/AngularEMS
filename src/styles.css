@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+
+
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; 
+    font-family: Roboto, monospace;
+    overflow: hidden;
+ }
+
+ .btn-dailog-close{
+     width:35px;
+     min-width: 0 !important;
+     height: 40px;
+     padding: 0px !important;
+     border-radius: 100%;
+     
+
+ }

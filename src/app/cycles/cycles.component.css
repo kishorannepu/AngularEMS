@@ -1,0 +1,30 @@
+::ng-deep .mat-form{
+    width:110px !important;
+    margin-left:1.5%
+  }
+  ::ng-deep .mat-button{
+    height:35px !important;
+    line-height: 1em;
+    margin-top: 10px;
+  }
+  /* ::ng-deep mat-toolbar{
+  
+  } */
+  .mat-toolbar{
+    margin-left:-25px;
+    margin-top:-25px;
+    margin-right:0px;
+    width:107%;
+    padding:0 0px;
+    background-color:rgb(233, 37, 37);
+    height:40px !important;
+    line-height: 3em;
+   
+  }
+  .example-icon {
+    padding: 0 14px;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }

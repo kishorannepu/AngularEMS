@@ -1,0 +1,17 @@
+<mat-toolbar  class="mat-toolbar" >
+  <!-- <mat-toolbar-row class="mat-toolbar-multiple-rows"> -->
+      <span style="margin-left: 40px;color:aliceblue">{{sectionname}} &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp; &nbsp;&nbsp;<span style="color:rgb(16, 238, 227)">No.Of Cycles/hr in a day</span></span>
+      <span class="example-spacer"></span>
+      <button class="btn-dailog-close example-icon" mat-stroked-button (click)="onClose()">
+          <mat-icon>clear</mat-icon>
+        </button>
+    <!-- </mat-toolbar-row> -->
+</mat-toolbar>
+
+<div *ngIf="status1">
+  <mat-spinner style="margin-left:40%;margin-top:15%"></mat-spinner>
+  </div>
+  <div [hidden]=!status2>
+  <canvas id="canvas" height=120  style="margin-top:35px;">{{chart}}</canvas>
+</div>

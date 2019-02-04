@@ -1,0 +1,46 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 150px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+background: rgb(109, 47, 47);
+  /* #2f05d8f5 */
+}
+
+.mat-drawer {
+  background-color: rgba(109, 47, 47, 0.486);
+ 
+}
+
+.drop-down-list{
+    color: #008DE7;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+
+
+.mat-menu-panel{
+  background:#2f05d891;
+}
+
+.profile{
+  margin-left:180px;
+}
+
+
+@media (max-width:768px) {  
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+ 
+  .profile{
+    margin-left:30%;
+  }
+
+
+}

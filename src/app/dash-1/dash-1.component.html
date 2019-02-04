@@ -1,0 +1,154 @@
+<div class="grid-container" >
+  <div style="margin-top:1%;margin-left: 5%">
+      <a class="round-button" routerLink="/mainindex/dashboard">
+      <i class="material-icons">arrow_back</i>
+  </a>
+    </div>
+ 
+  <div style="color: #29b6f6;font-size: 16px;font-weight: 500;margin-left:15%;margin-top:-2%">{{SiteName}}
+  <span style="color: #29b6f6;font-size: 16px;font-weight: 500;">Consumption Details 
+    ( @ {{todayDateDis | date : 'dd-MMM-yyyy hh:mm a'}} )</span>
+    </div>
+  <mat-grid-list cols="3" rowHeight="350px">
+    <mat-grid-tile  colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card class="dashboard-card example-card4">
+          <table>
+            <tr>
+              <td width="100px" class="td1">
+                (UNITS)<br>
+                <span style="margin-left:0px;">kWh</span>
+              </td>
+              <td width="100px" class="td2">
+                <span style="color:white">Today</span><br>
+                <b>{{todayconsumeng == 0 ? dash :todayconsumeng | number:'2.0-0'}}</b>
+
+              </td>
+
+              <td width="100px" class="td3">
+                This Month <br>
+                <b>{{TotalMonthsConsumUpto == 0 ? dash:TotalMonthsConsumUpto | number:'4.0-0'}}</b>
+              </td>
+            </tr>
+             <tr>
+              <td class="td2-1">
+                Yesterday<br>
+                <b>{{EnergyValInrFmt == 0 ? dash :EnergyValInrFmt}}</b>
+
+                <i class="material-icons" style="font-size:12px;margin-left:0px;font-weight:bold; color:yellow;">
+
+                  {{ ( dayenergyvaluepercentage<=0 ? 'keyboard_arrow_down' : 'keyboard_arrow_up' )}} </i> <span style="margin-left:0px;font-size:8px;
+                  color:yellow;">{{dayenergyvaluepercentage
+                    | number:'2.1-1'}}%</span>
+              </td>
+              <td class="td2-2">
+                Last Month<br>
+                To Date <br>
+                <b>{{( TotallastMonthsConsumUpto == 0 ? dash : TotallastMonthsConsumUpto |number:'4.0-0')}}</b>
+              </td>
+            </tr> 
+          </table>
+
+
+        </mat-card>
+        <mat-card class="dashboard-card example-card5">
+          <table>
+            <tr>
+              <td width="100px" class="td1">
+                (INR)<br>
+                Rs
+              </td>
+              <td width="100px" class="td2">
+                Today<br>
+                <b>{{TodayEngergyCost == 0 ? dash :TodayEngergyCost|currency:'INR':'symbol-narrow':'3.0-0'}}</b>
+              </td>
+
+              <td width="100px" class="td3">
+                This Month <br>
+                <b>{{TotalMonthsConsumCost|currency:'INR':'symbol-narrow':'4.0-0'}}</b>
+              </td>
+            </tr>
+            <tr>
+               <td class="td2-1">
+                Yesterday<br>
+                <b>{{EnergyValInrFmtCost == 0 ? dash :EnergyValInrFmtCost|currency:'INR':'symbol-narrow':'4.0-0'}}</b>
+                <i class="material-icons" style="font-size:12px;margin-left:0px;font-weight:bold;color:yellow;" e>
+
+                  {{ ( dayenergycostpercentage<=0 ? 'keyboard_arrow_down' : 'keyboard_arrow_up' )}} </i> <span style="margin-left:0px;font-size:8px;color:yellow;">
+                    {{dayenergycostpercentage | number:'2.1-1'}}%
+                    </span>
+
+              </td>
+              <td class="td2-2">
+                Last Month<br>
+                To Date <br>
+                <b>{{(TotallastMonthsConsumUptoCast == 0 ? dash :
+                  TotallastMonthsConsumUptoCast|currency:'INR':'symbol-narrow':'4.0-0')}}</b>
+              </td>
+            </tr>
+          </table>
+
+
+        </mat-card>
+      </mat-card>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile  colspan="2" rowspan="1">
+      <mat-card class="dashboard-card">
+        <form #ref='ngForm' (ngSubmit)="dateWise(ref.value)">
+          <mat-button-toggle-group  aria-label="Font Style" value="bold" class="mat-button">
+              <mat-button-toggle  value="bold" (click)="cbSwitchClick('twentyfourhrs')" >24 HR</mat-button-toggle>
+              <mat-button-toggle  value="italic" (click)="cbSwitchClick('Billing Cycle')" >Billing Cycle</mat-button-toggle>
+              <mat-button-toggle  value="underline" (click)="cbSwitchClick('Year')" >year</mat-button-toggle>
+            </mat-button-toggle-group>
+           
+            <span *ngIf="day">
+              <mat-form-field nmae="field1" class="mat-form">
+              <input matInput [matDatepicker]="picker" [(ngModel)]="date" name="day">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </span>
+         <span *ngIf="billing">
+            <mat-form-field  nmae="field2" class="mat-form">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="startdate" name="billing1">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field nmae="field3" class="mat-form">
+                  <input matInput [matDatepicker]="picker2" [(ngModel)]="todayData1" name="billing2">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+             </span>
+                <span *ngIf="year">
+                    <mat-form-field nmae="field4" class="mat-form">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="dtNow" name="year">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </span>
+
+                &nbsp;  &nbsp;<button mat-raised-button>Show</button>
+                &nbsp;  
+                <!-- <i class="fa fa-flash"></i>  &nbsp;
+                <mat-slide-toggle name="swith" (change)='change()'[(ngModel)]="swithstatus"></mat-slide-toggle>&nbsp;
+                &nbsp;<i class="fa fa-inr"></i> -->
+              </form>
+     <span *ngIf="day">You Used {{todayconsumeng == 0 ? "- - -" :todayconsumeng|number:'2.0-0'}} Kwh</span>  
+     <span *ngIf="billing">You Used {{TotalMonthsEnergy}} Kwh</span>  
+     <span *ngIf="year">You Used {{TotalYearsEnergy}} Kwh</span>        
+              
+                
+                <!-- <mat-spinner *ngIf="status1"></mat-spinner> -->
+              <div [hidden] = !chart> 
+                <canvas id="ctx1" height=100  style="margin-top:10px;">{{chart}}</canvas>
+              </div>
+                
+      </mat-card>
+    </mat-grid-tile>
+
+    
+  </mat-grid-list>
+</div>

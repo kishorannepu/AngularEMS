@@ -1,0 +1,42 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 150px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  /* background: #2f05d8f5; */
+  background: rgba(75, 31, 77, 0.959);
+}
+
+.mat-drawer {
+  /* background-color: #2f05d891; */
+  background: rgba(75, 31, 77, 0.418);
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+.profile{
+  margin-left:180px;
+}
+
+.drop-down-list{
+  color: #008DE7;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+
+@media (max-width:768px) {  
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+ 
+  .profile{
+    margin-left:60%;
+  }
+
+
+}

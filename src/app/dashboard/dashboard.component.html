@@ -1,0 +1,110 @@
+<body>
+  <mat-grid-list [cols]="breakpoint" rowHeight="150px" (window:resize)="onResize($event)">
+    <div *ngIf="getdata">
+    <mat-grid-tile *ngFor="let data of getdata|derp;let in=index">
+      
+        <div *ngIf="responseData1">
+        <mat-card class="example-card" *ngFor="let i of responseData1[in]">
+
+          <table *ngIf="todayDate">
+            <tr>
+              <td width="100" rowspan="2">
+                <div class="overlay-image">
+                  <a mat-list-item routerLink="/mainindex/maindashboard" (click)="nodeMacIdIndex(in,data.SiteName)">
+                    <img mat-card-image [src]="data.Imageurl" style="height: 19.5vh;width:130px;filter: brightness(80%);">
+                    <div class="normal">
+                      <div class="text2">
+                        {{data.SiteName}}
+                      </div>
+
+                      <div class="text">
+
+                        {{todayadate | date:'MMM d,h:mm a'}}
+
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+
+
+
+
+              </td>
+
+              <td width="220" style="text-align:center">
+                <div id="container">
+                  <mat-progress-spinner class="example-margin" id="navi" [color]="colors[in]" mode="determinate" value="{{i.loadPercentage}}"
+                    strokeWidth='5' diameter='40'>
+
+                  </mat-progress-spinner>
+                  <div class="position">
+                    <b>{{i.loadPercentage | number:'2.0-0'}}%</b>
+                  </div>
+                  <mat-progress-spinner class="example-margin mat-spinner" id="infoi" mode="determinate" value=100
+                    strokeWidth='0.3' diameter='40'>
+
+                  </mat-progress-spinner>
+                  <mat-progress-spinner class="example-margin mat-spinner" id="infoi1" mode="determinate" value=100
+                    strokeWidth='0.3' diameter='30'>
+
+                  </mat-progress-spinner>
+
+
+
+
+
+                </div>
+              </td>
+              <td width="100" style="font-size:11px;color:rgb(18, 120, 214);">
+                <i class="material-icons" appHighlight [Value]=i.avgWeekValue style="margin-left: 5px;">
+
+                  {{ ( i.avgWeekValue <=0 ? 'keyboard_arrow_down' : 'keyboard_arrow_up' )}} </i> <b style="margin-left: 5px;">{{i.avgWeekValue |
+                    number:'1.0-0'}}</b>% <br><span>vs Avg.{{dayCount}}</span>
+              </td>
+
+              <td width="250">
+                <div class="block" appRankSqFt [Value]=i.rankSqFt>
+
+                </div><b style="margin-left: 25px;">#{{i.rankSqFt}}</b>
+                <span>of {{lengthOfData}}</span>
+              </td>
+              <td width="150">
+                <img src="assets/temperature.png" style="width:15px;height:20px;">
+                <b>{{temp[in]}}</b> <span style="color:rgb(21, 119, 211)">°C </span>
+                <span>Room Temp.</span>
+
+              </td>
+            </tr>
+            <tr>
+
+
+              <td width="220">
+                <b>{{i.po1 |number:'2.0-0'}}</b>kW <br>
+                <span>Now</span>
+              </td>
+              <td width="100">
+                <b>{{i.e1 | number:'3.0-0'}}</b>kWh
+                <span>Today</span>
+              </td>
+              <td width="250">
+                <b>{{i.energyPerSqFt | number:'1.2-3' }}</b>
+                <span>kWh/Sq.ft</span>
+              </td>
+              <td width="150">
+                <b>{{i.t2 | number:'1.0-0'}}</b><span style="color:rgb(21, 119, 211)">°C </span>
+                <span>Outside Temp.</span>
+              </td>
+
+
+            </tr>
+
+          </table>
+        </mat-card>
+
+          </div>
+     
+    </mat-grid-tile>
+  </div>
+  </mat-grid-list>
+</body>

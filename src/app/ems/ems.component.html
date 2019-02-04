@@ -1,0 +1,66 @@
+<body style="background-image:url('assets/emslogin1.png');" class="bg-img">
+  <div *ngIf="!loading" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-grid-list cols="4" rowHeight="350px" *ngIf='loading' (window:resize)="onResize($event)">
+
+    <mat-grid-tile colspan="4" rowspan="1.5">
+
+      <mat-card class="example-card1">
+        <div class="overlay-image">
+          <div class="text1">
+            <img src="assets/indriynicon.png" style="width:100px;height:50px">
+          </div>
+
+
+          <div class="text3">WELCOME TO ENTERPRISE BUILDING </div>
+          <span class="text2"> OPERATIONS & PERFORMANCE </span>
+          <span class="text4">MANAGEMENT SUITE FOR </span>
+          <span class="text5">COMMERCIAL BUILDINGS</span>
+          <div class="text6">LOADED WITH <span style="color:yellow;font-size: 15px;"> AI</span></div>
+          <div class="text7">
+            Building Performance Dashboard<br>
+            Energy Efficiency & Sustainability<br>
+
+            Remote Asset Management
+          </div>
+          </div>
+      </mat-card>
+
+      <mat-card class="example-card2">
+        <form #loginRef='ngForm' (ngSubmit)="onSubmit(loginRef.value)">
+          <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>UserName</mat-label>
+              <input type="text" matInput name="username" placeholder="" [(ngModel)]="username" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput name="password" placeholder="" [(ngModel)]="password" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Enterprise Code</mat-label>
+              <input matInput placeholder="" name="enterprisecode" [(ngModel)]="enterprisecode" required>
+            </mat-form-field>
+            <button type="submit" [disabled]="!loginRef.valid" mat-raised-button color="primary" style='width:8px;margin-left:30%;margin-top:-8%'>Login</button>
+            <a mat-button matTooltipClass="tooltip" style='font-size: 12px;width:60px;' matTooltip="Please contact your admin">
+
+
+              Forgot Password?</a>
+          </div>
+        </form>
+      </mat-card>
+
+
+
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+
+
+
+
+</body>
+
+

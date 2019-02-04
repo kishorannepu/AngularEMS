@@ -1,0 +1,54 @@
+<mat-toolbar color="warn" class="mat-toolbar" gutterSize=0>
+    <!-- <mat-toolbar-row class="mat-toolbar-multiple-rows"> -->
+        <span style="color:white;margin-left: 40px">{{sectionname}}</span>
+        <span class="example-spacer"></span>
+        <button class="btn-dailog-close example-icon" mat-stroked-button (click)="onClose()">
+            <mat-icon>clear</mat-icon>
+          </button>
+      <!-- </mat-toolbar-row> -->
+ </mat-toolbar>
+  <form #ref='ngForm' (ngSubmit)="dateWise(ref.value)">
+      <mat-button-toggle-group class="mat-button" aria-label="Font Style" [value]=value>
+          <mat-button-toggle  value="bold" (click)="cbSwitchClick('twentyfourhrs',dtNow)" >{{Today}}</mat-button-toggle>
+          <mat-button-toggle  value="italic" (click)="cbSwitchClick('Billing Cycle',dtNow)" >Billing Cycle</mat-button-toggle>
+        
+        </mat-button-toggle-group>
+       
+      <span *ngIf="day">
+          <mat-form-field  nmae="field1" class="mat-form">
+              <input matInput [matDatepicker]="picker" [(ngModel)]="date" name="day" 
+              [ngStyle]="{'background-color':bgcolor? '#bdbdbd' : '#e65100' }">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+      </span>
+     <span *ngIf="billing">
+        <mat-form-field  nmae="field1" class="mat-form">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="startdate" name="billing1">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field nmae="field2" class="mat-form">
+              <input matInput [matDatepicker]="picker2" [(ngModel)]="todayData1" name="billing2">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+         </span>
+            
+
+            &nbsp;  &nbsp;<button mat-raised-button>Show</button>
+            &nbsp;
+            <button mat-raised-button (click)="convert()" [disabled]=dwnstatuss>PDF</button>&nbsp;&nbsp;
+            <button mat-raised-button (click)="downloadFile()" [disabled]=dwnstatuss>CSV</button>
+            
+</form>
+<div *ngIf="status1">
+<mat-spinner value=50 style="margin-left:40%;margin-top:15%"></mat-spinner>
+</div>
+<!-- <button (click)="resetZoom()">Reset Zoom</button> -->
+<!-- <div [hidden]=!status2>
+<canvas id="canvas" height=120  style="margin-top:0px;">{{chart}}</canvas>
+</div> -->
+
+<div id="chartContainer" style="height:280px; width: 100%; margin-left:auto;margin-right:auto;">
+</div>
